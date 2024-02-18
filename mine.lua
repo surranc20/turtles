@@ -18,7 +18,7 @@ function dig_square(side_len)
     on_starting_side = true
 
     while true do
-        mine_line(side_len - 1)
+        mine_line(side_len)
         lines_to_dig = lines_to_dig - 1
         on_starting_side = not on_starting_side
 
@@ -53,6 +53,8 @@ end
 function dig_quary(side_len)
     while side_len > 1 do
         dig_square(side_len)
+        turtle.digDown()
+        turtle.down()
         side_len = side_len - 1
     end
 end

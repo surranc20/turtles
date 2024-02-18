@@ -1,5 +1,5 @@
 function mine_line(line_len)
-    while line_len > 0 do
+    while line_len > 1 do
         turtle.dig()
         turtle.forward()
         line_len = line_len - 1
@@ -7,7 +7,7 @@ function mine_line(line_len)
 end
 
 function travel_line(line_len)
-    while line_len > 0 do
+    while line_len > 1 do
         turtle.forward()
         line_len = line_len - 1
     end
@@ -18,7 +18,7 @@ function dig_square(side_len)
     on_starting_side = true
 
     while true do
-        mine_line(side_len)
+        mine_line(side_len - 1)
         lines_to_dig = lines_to_dig - 1
         on_starting_side = not on_starting_side
 
@@ -50,7 +50,14 @@ function dig_square(side_len)
     turtle.turnRight()
 end
 
-dig_square(5)
+function dig_quary(side_len)
+    while side_len > 1 do
+        dig_square(side_len)
+        side_len = side_len - 1
+    end
+end
+
+dig_quary(5)
 
 
 

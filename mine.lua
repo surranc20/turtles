@@ -34,6 +34,8 @@ function dig_square(side_len)
             turtle.dig()
             turtle.forward()
             turtle.turnRight()
+        end
+    end
 
     if not on_starting_side then
         turtle.turnRight()
@@ -46,7 +48,7 @@ function dig_square(side_len)
     turtle.turnRight()
 end
 
-
+dig_squar(5)
 
 
 

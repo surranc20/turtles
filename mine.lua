@@ -48,7 +48,7 @@ function dig_square(side_len)
     turtle.turnRight()
 end
 
-dig_squar(5)
+dig_square(5)
 
 
 

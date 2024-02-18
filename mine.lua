@@ -1,7 +1,7 @@
 function mine_line(line_len)
     while line_len > 0 do
         turtle.dig()
-        turtle.forward()er
+        turtle.forward()
         line_len = line_len - 1
     end
 

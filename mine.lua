@@ -50,16 +50,22 @@ function dig_square(side_len)
     turtle.turnRight()
 end
 
-function dig_quary(side_len)
-    while side_len > 1 do
+function dig_quary(side_len, depth)
+    squares_to_dig = depth
+    while squares_to_dig > 1 do
         dig_square(side_len)
         turtle.digDown()
         turtle.down()
-        side_len = side_len - 1
+        squares_to_dig = squares_to_dig - 1
+    end
+
+    while depth > 0 do
+        turtle.up()
+        depth = depth - 1
     end
 end
 
-dig_quary(5)
+dig_quary(5, 40)
 
 
 

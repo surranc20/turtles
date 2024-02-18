@@ -4,12 +4,14 @@ function mine_line(line_len)
         turtle.forward()
         line_len = line_len - 1
     end
+end
 
 function travel_line(line_len)
     while line_len > 0 do
         turtle.forward()
         line_len = line_len - 1
     end
+end
 
 function dig_square(side_len)
     lines_to_dig = side_len

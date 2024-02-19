@@ -14,8 +14,8 @@ function travel_line(line_len)
 end
 
 function dig_square(side_len)
-    lines_to_dig = side_len
-    on_starting_side = true
+    local lines_to_dig = side_len
+    local on_starting_side = true
 
     while true do
         mine_line(side_len)
@@ -50,20 +50,57 @@ function dig_square(side_len)
     turtle.turnRight()
 end
 
-function dig_quary(side_len, depth, pre_drill)
-    pre_drilled = 0
+function get_free_slots()
+    local free_slots = 0
+    for i = 1, 16 do
+        if turtle.getItemSpace(i) == 0 then
+            free_slots = free_slots + 1
+        end
+    end
+    return free_slots
+end
+
+function item_in_array(tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+end
+
+function discard_junk()
+    local selected_slot = turtle.getSelectedSlot()
+    local junk = {"minecraft:cobblestone", "minecraft:andesite", "minecraft:dirt"}
+    for i = 1, 16 do
+        turtle.select(i)
+        local slot_info = turtle.getItemDetail(i)
+        if slot_info and item_in_array(junk, slot_info.name) then
+            turtle.drop()
+        end
+    end
+    turtle.select(selected_slot)
+end
+
+function dig_quarry(side_len, depth, pre_drill)
+    local pre_drilled = 0
     while pre_drilled < pre_drill do
         turtle.digDown()
         turtle.down()
         pre_drilled = pre_drilled + 1
     end
 
-    squares_to_dig = depth
+    local squares_to_dig = depth
     while squares_to_dig > 1 do
         dig_square(side_len)
         turtle.digDown()
         turtle.down()
         squares_to_dig = squares_to_dig - 1
+        discard_junk()
+
+        -- if (get_free_slots() < 4) then
+
+        -- end
+
     end
 
     depth = depth + pre_drill
@@ -73,7 +110,8 @@ function dig_quary(side_len, depth, pre_drill)
     end
 end
 
-dig_quary(5, 40, 40)
+
+dig_quarry(5, 40, 40)
 
 
 

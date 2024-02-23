@@ -70,7 +70,8 @@ end
 
 function discard_junk()
     local selected_slot = turtle.getSelectedSlot()
-    local junk = {"minecraft:cobblestone", "minecraft:andesite", "minecraft:dirt", "minecraft:gravel", "minecraft:granite", "minecraft:diorite"}
+    local junk = {"minecraft:cobblestone", "minecraft:andesite", "minecraft:dirt", "minecraft:gravel",
+    "minecraft:granite", "minecraft:diorite", "minecraft:cobbled_deepslate", "minecraft:oak_planks"}
     for i = 1, 16 do
         turtle.select(i)
         local slot_info = turtle.getItemDetail(i)

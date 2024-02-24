@@ -124,4 +124,4 @@ function dig_quarry(side_len, depth, pre_drill)
     end
 end
 
-dig_quarry(5, 40, 40)
+dig_quarry(5, 2, 2)

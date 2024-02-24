@@ -82,6 +82,13 @@ function discard_junk()
     turtle.select(selected_slot)
 end
 
+function dropAll()
+    for i = 1, 16 do
+        turtle.select(i)
+        turtle.dropUp()
+    end
+end
+
 function dig_quarry(side_len, depth, pre_drill)
     local pre_drilled = 0
     while pre_drilled < pre_drill do
@@ -104,7 +111,7 @@ function dig_quarry(side_len, depth, pre_drill)
                 turtle.up()
                 depth_below_surface = depth_below_surface - 1
             end
-            turtle.dropUp()
+            dropAll()
             return dig_quarry(side_len, depth - squares_dug, pre_drilled + squares_dug)
         end
     end

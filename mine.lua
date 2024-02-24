@@ -86,6 +86,7 @@ function dropAll()
     for i = 1, 16 do
         turtle.select(i)
         turtle.dropUp()
+        print("Dropped slot " .. i)
     end
 end
 

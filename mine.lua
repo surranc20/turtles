@@ -53,7 +53,7 @@ end
 function get_free_slots()
     local free_slots = 0
     for i = 1, 16 do
-        if turtle.getItemSpace(i) == 0 then
+        if turtle.getItemCount(i) == 0 then
             free_slots = free_slots + 1
         end
     end

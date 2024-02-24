@@ -105,7 +105,7 @@ function dig_quarry(side_len, depth, pre_drill)
                 depth_below_surface = depth_below_surface - 1
             end
             turtle.dropUp()
-            return dig_quarry(side_len, depth - squares_dug, pre_drill + squares_dug)
+            return dig_quarry(side_len, depth - squares_dug, pre_drilled + squares_dug)
         end
     end
 

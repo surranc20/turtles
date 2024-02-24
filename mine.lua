@@ -57,6 +57,7 @@ function get_free_slots()
             free_slots = free_slots + 1
         end
     end
+    print("Turtle currently has ".. free_slots .. " free slots.")
     return free_slots
 end
 

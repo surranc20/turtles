@@ -90,18 +90,23 @@ function dig_quarry(side_len, depth, pre_drill)
         pre_drilled = pre_drilled + 1
     end
 
-    local squares_to_dig = depth
-    while squares_to_dig > 1 do
+    local squares_dug = 0
+    while squares_dug < depth do
         dig_square(side_len)
         turtle.digDown()
         turtle.down()
-        squares_to_dig = squares_to_dig - 1
+        squares_dug = squares_dug + 1
         discard_junk()
 
-        -- if (get_free_slots() < 4) then
-
-        -- end
-
+        if (get_free_slots() < 4) then
+            local depth_below_surface = pre_drill + squares_dug
+            while depth_below_surface > 0 do
+                turtle.up()
+                depth_below_surface = depth_below_surface - 1
+            end
+            turtle.dropUp()
+            return dig_quarry(side_len, depth - squares_dug, pre_drill + squares_dug)
+        end
     end
 
     depth = depth + pre_drill
@@ -113,7 +118,5 @@ end
 
 
 dig_quarry(5, 40, 40)
-
-
 
 

@@ -72,7 +72,8 @@ end
 function discard_junk()
     local selected_slot = turtle.getSelectedSlot()
     local junk = {"minecraft:cobblestone", "minecraft:andesite", "minecraft:dirt", "minecraft:gravel",
-    "minecraft:granite", "minecraft:diorite", "minecraft:cobbled_deepslate", "minecraft:oak_planks"}
+    "minecraft:granite", "minecraft:diorite", "minecraft:cobbled_deepslate", "minecraft:oak_planks",
+    "minecraft:netherrack"}
     for i = 1, 16 do
         turtle.select(i)
         local slot_info = turtle.getItemDetail(i)
@@ -125,4 +126,4 @@ function dig_quarry(side_len, depth, pre_drill)
     end
 end
 
-dig_quarry(5, 2, 2)
+dig_quarry(7, 70, 100)

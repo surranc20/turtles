@@ -1,4 +1,4 @@
-function mine_line(line_len)
+local function mine_line(line_len)
     while line_len > 1 do
         turtle.dig()
         turtle.forward()
@@ -6,14 +6,14 @@ function mine_line(line_len)
     end
 end
 
-function travel_line(line_len)
+local function travel_line(line_len)
     while line_len > 1 do
         turtle.forward()
         line_len = line_len - 1
     end
 end
 
-function dig_square(side_len)
+local function dig_square(side_len)
     local lines_to_dig = side_len
     local on_starting_side = true
 
@@ -50,7 +50,7 @@ function dig_square(side_len)
     turtle.turnRight()
 end
 
-function get_free_slots()
+local function get_free_slots()
     local free_slots = 0
     for i = 1, 16 do
         if turtle.getItemCount(i) == 0 then
@@ -69,7 +69,7 @@ function item_in_array(tab, val)
     end
 end
 
-function discard_junk()
+local function discard_junk()
     local selected_slot = turtle.getSelectedSlot()
     local junk = {"minecraft:cobblestone", "minecraft:andesite", "minecraft:dirt", "minecraft:gravel",
     "minecraft:granite", "minecraft:diorite", "minecraft:cobbled_deepslate", "minecraft:oak_planks",
@@ -84,7 +84,7 @@ function discard_junk()
     turtle.select(selected_slot)
 end
 
-function dropAll()
+local function dropAll()
     for i = 1, 16 do
         turtle.select(i)
         turtle.dropUp()
@@ -92,7 +92,7 @@ function dropAll()
     end
 end
 
-function dig_quarry(side_len, depth, pre_drill)
+local function dig_quarry(side_len, depth, pre_drill)
     local pre_drilled = 0
     while pre_drilled < pre_drill do
         turtle.digDown()
